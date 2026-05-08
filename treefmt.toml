@@ -1,0 +1,10 @@
+[global]
+excludes = [
+  ".devenv/**",
+  ".direnv/**",
+  ".git/**",
+]
+
+[formatter.nix]
+command = "nixfmt"
+includes = ["*.nix"]

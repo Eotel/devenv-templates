@@ -3,3 +3,6 @@
 .direnv/
 result
 result-*
+.pre-commit-config.yaml
+.envrc.local
+devenv.local.nix
