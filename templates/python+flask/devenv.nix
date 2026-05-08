@@ -1,7 +1,5 @@
 {
   pkgs,
-  lib,
-  config,
   inputs,
   ...
 }:
@@ -27,10 +25,12 @@
     git-hooks.enable = true;
     lsp.enable = false;
     strict-types.enable = false;
-    services.postgres.enable = false;
-    services.mysql.enable = false;
-    services.redis.enable = false;
-    services.sqlite.enable = true;
+    services = {
+      postgres.enable = false;
+      mysql.enable = false;
+      redis.enable = false;
+      sqlite.enable = true;
+    };
   };
 
   languages.python = {

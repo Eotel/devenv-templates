@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   cfg = config.features.services.postgres;
 in
@@ -29,7 +34,7 @@ in
 
     services.postgres = lib.mkIf cfg.runService {
       enable = true;
-      initialDatabases = cfg.initialDatabases;
+      inherit (cfg) initialDatabases;
     };
   };
 }

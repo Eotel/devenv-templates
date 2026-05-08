@@ -1,7 +1,5 @@
 {
   pkgs,
-  lib,
-  config,
   inputs,
   ...
 }:
@@ -27,13 +25,16 @@
     git-hooks.enable = true;
     lsp.enable = false;
     strict-types.enable = false;
-    services.postgres.enable = true;
-    services.mysql.enable = false;
-    services.redis.enable = false;
-    services.sqlite.enable = false;
+    services = {
+      postgres = {
+        enable = true;
+        initialDatabases = [ { name = "django_app"; } ];
+      };
+      mysql.enable = false;
+      redis.enable = false;
+      sqlite.enable = false;
+    };
   };
-
-  features.services.postgres.initialDatabases = [ { name = "django_app"; } ];
 
   languages.python = {
     enable = true;
