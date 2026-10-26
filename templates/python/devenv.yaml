@@ -6,11 +6,6 @@ inputs:
     inputs:
       nixpkgs:
         follows: nixpkgs
-  nixpkgs-python:
-    url: github:cachix/nixpkgs-python
-    inputs:
-      nixpkgs:
-        follows: nixpkgs
   devenv-templates:
     url: github:Eotel/devenv-templates
     flake: false
@@ -18,6 +13,5 @@ inputs:
 cachix:
   enable: true
   caches:
-    - nixpkgs-python
     - devenv
     - nix-community

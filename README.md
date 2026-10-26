@@ -44,6 +44,7 @@ Each toggle is a small NixOS-style module under [`lib/modules/`](./lib/modules) 
 
 - `direnv` / `delta` are **assumed installed system-wide** (e.g. via nix-darwin / home-manager). The modules only wire the project-local config; they do not install the binaries.
 - `git-hooks.hooks` is used (not the deprecated `pre-commit.hooks`).
+- Python comes from `languages.python.package = pkgs.python3XX` (devenv-nixpkgs), which `cache.nixos.org` and `devenv.cachix.org` serve prebuilt. Change the minor version by switching the attribute (e.g. `pkgs.python313`). Use `cachix/nixpkgs-python` and `languages.python.version` only when a project must pin an exact patch release, and never set `inputs.nixpkgs.follows` on it: its cache is built against its own pinned nixpkgs, so following ours turns every Python into a source build.
 - `services.postgres` etc. wrap devenv's built-ins and additionally set the build environment (`libpq`, `LD_LIBRARY_PATH`, `MYSQLCLIENT_*`) needed by Python clients.
 
 ## Layout
