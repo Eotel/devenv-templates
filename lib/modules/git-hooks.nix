@@ -14,7 +14,7 @@ in
     nixfmt = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Run nixfmt-rfc-style on .nix files at commit time.";
+      description = "Run nixfmt on .nix files at commit time.";
     };
 
     deadnix = lib.mkOption {
@@ -50,7 +50,7 @@ in
 
   config = lib.mkIf cfg.enable {
     git-hooks.hooks = {
-      nixfmt-rfc-style.enable = cfg.nixfmt;
+      nixfmt.enable = cfg.nixfmt;
       deadnix.enable = cfg.deadnix;
       statix.enable = cfg.statix;
       end-of-file-fixer.enable = cfg.endOfFileFixer;
